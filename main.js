@@ -57,7 +57,7 @@ function generatePlane() {
       array[i + 1] = y + (Math.random() - 0.5) * 3;
       array[i + 2] = z + (Math.random() - 0.5) * 5;
     }
-    randomValues.push(Math.random() - 0.5);
+    randomValues.push(Math.random() * Math.PI * 2);
   }
   planeMesh.geometry.attributes.position.randomValues = randomValues;
 
@@ -150,7 +150,7 @@ scene.add(backLight);
 
 new OrbitControls(camera, renderer.domElement);
 
-camera.position.z = 50;
+camera.position.z = 60;
 
 const mouse = {
   x: undefined,
@@ -163,7 +163,7 @@ function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
   raycaster.setFromCamera(mouse, camera);
-  frame += 0.01;
+  frame += 0.1;
 
   const { array, originalPosition, randomValues } =
     planeMesh.geometry.attributes.position;
