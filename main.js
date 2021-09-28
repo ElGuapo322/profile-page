@@ -64,17 +64,6 @@ function generatePlane() {
   planeMesh.geometry.attributes.position.originalPosition =
     planeMesh.geometry.attributes.position.array;
 
-  // const { array } = planeMesh.geometry.attributes.position;
-  // for (let i = 0; i < array.length; i += 3) {
-  //   const x = array[i];
-  //   const y = array[i + 1];
-  //   const z = array[i + 2];
-
-  //   array[i] = x + Math.random() - 0.5;
-  //   array[i + 1] = y + Math.random() - 0.5;
-  //   array[i + 2] = z + Math.random();
-  // }
-
   const colors = [];
   for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
     colors.push(0, 0.19, 0.4);
@@ -112,24 +101,6 @@ scene.add(planeMesh);
 generatePlane();
 console.log(planeMesh.geometry.attributes.position.array);
 
-// const { array } = planeMesh.geometry.attributes.position;
-// const randomValues = [];
-// for (let i = 0; i < array.length; i++) {
-//   const x = array[i];
-//   const y = array[i + 1];
-//   const z = array[i + 2];
-
-//   if (i % 3 === 0) {
-//     array[i] = x + (Math.random() - 0.5) * 3;
-//     array[i + 1] = y + (Math.random() - 0.5) * 3;
-//     array[i + 2] = z + (Math.random() - 0.5) * 5;
-//   }
-//   randomValues.push(Math.random() - 0.5);
-// }
-// planeMesh.geometry.attributes.position.randomValues = randomValues;
-
-// planeMesh.geometry.attributes.position.originalPosition =
-//   planeMesh.geometry.attributes.position.array;
 const colors = [];
 for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
   colors.push(0, 0.19, 0.4);
@@ -175,7 +146,6 @@ function animate() {
   }
   planeMesh.geometry.attributes.position.needsUpdate = true;
 
-  //planeMesh.rotation.x += 0.01;
   const intersects = raycaster.intersectObject(planeMesh);
   if (intersects.length > 0) {
     const { color } = intersects[0].object.geometry.attributes;
